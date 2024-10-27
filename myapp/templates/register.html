@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container form-container">
+    <form method="POST" class="register-form">
+        {{ form.hidden_tag() }}
+        <h1>Please Register</h1>
+        <div class="">
+            <!-- Left Column -->
+            <div class="">
+                <!-- First Name Field -->
+                <div class="form-group">
+                    {{ form.first_name.label() }}
+                    {{ form.first_name(class_="form-control", placeholder="First Name") }}
+                    {% for error in form.first_name.errors %}
+                        <span class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Last Name Field -->
+                <div class="form-group">
+                    {{ form.last_name.label() }}
+                    {{ form.last_name(class_="form-control", placeholder="Last Name") }}
+                    {% for error in form.last_name.errors %}
+                        <span class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!-- Email Field -->
+                <div class="form-group">
+                    {{ form.email.label() }}
+                    {{ form.email(class_="form-control", placeholder="Last Name") }}
+                    {% for error in form.email.errors %}
+                        <span class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <!-- password Field -->
+                <div class="form-group">
+                    {{ form.password.label() }}
+                    {{ form.password(class_="form-control", placeholder="Password") }}
+                    {% for error in form.password.errors %}
+                        <span class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <!-- confirm password Field -->
+                <div class="form-group">
+                    {{ form.confirm_password.label() }}
+                    {{ form.confirm_password(class_="form-control", placeholder="Confirm Password") }}
+                    {% for error in form.confirm_password.errors %}
+                        <span class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Address Field -->
+                
+            </div>
+
+         
+
+           
+        </div>
+        <!-- Submit Button -->
+
+         {{form.submit(class="submit-button")}}
+        
+        
+    </form>
+</div>
+{% endblock %}

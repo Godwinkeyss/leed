@@ -1,0 +1,367 @@
+/* Header styling */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+a:hover{
+    color:inherit
+}
+.error-message{
+    color:red;
+}
+.wrapper {
+    height: 100vh;
+    /* overflow: hidden; */
+}
+
+header {
+    background-color: #004c93; /* Prestige blue */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    /* height:130px; */
+}
+
+.header-wrapper {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+   
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start;
+}
+
+.header-left a {
+    margin-bottom: 5px; /* Space between logo and tagline */
+}
+
+.header-left img {
+    width: 60px;
+}
+
+.header-left p {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0; /* Remove default margin */
+}
+
+/* Header right styling */
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.header-right-top {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.header-right-bottom a {
+    color: #ffcc00; /* Gold color for links */
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.header-right-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Hero section styling */
+.hero {
+    background-image: url("https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;        /* Ensures the image covers the entire section */
+    background-position: center;   /* Centers the image */
+    position: relative;            /* Allows overlay positioning */
+    height: 80vh;                 /* Set to desired height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+/* Overlay for readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); 
+    z-index: 1;
+}
+
+/* Right side of the hero section */
+.hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    color: white;
+}
+
+.hero-right h1 {
+    /* color: #fff;  */
+    /* width:50%; */
+    font-size: 1.6rem;
+    /* Adjusted for better visibility */
+}
+.hero-right p{
+    width: 50%;
+    font-size: 1.2rem;
+}
+/* Clip section */
+.clip {
+    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+    background-color: #ffcc00;
+    color: #fff;
+    height: 400px;
+    width: 50%;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+    z-index: 2;
+    opacity: .6;
+}
+
+/* Left side of the hero section */
+.hero-left {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* add patient */
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 120px);
+}
+.form-container form{
+    border:1px solid #004c93;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease;
+}
+.form-left{
+    flex:1;
+   
+    width:100%;
+}
+.form-center{
+    flex:1;
+   
+    width:100%;
+}
+.form-right{
+    flex:1;
+    
+    width:100%;
+}
+.age{
+    /* margin-top:-10px; */
+}
+.register-form{
+    width:500px;
+}
+.register-form input{
+    width:100% !important;
+}
+form h1 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #004c93;
+    animation: zoomIn 0.5s ease;
+  }
+  .form-wrapper{
+    display: flex;
+    gap: 10px;
+    align-items:center;
+    justify-content:center;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #333;
+    transition: color 0.3s ease;
+    font-size: 14px;
+  }
+
+  input[type='number'],
+  input[type='text'],
+  select,
+  input[type='radio'] {
+    width: 100%;
+    padding: 10px;
+    /* margin: 10px 0; */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    outline:none;
+  }
+  
+
+  input[type='number']:focus,
+  input[type='text']:focus,
+  select:focus {
+    border-color: #ffcc00;
+    outline: none;
+    box-shadow: none;
+  }
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #004c93;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+  }
+
+  .submit-button:hover {
+    background-color: #004c93;
+    transform: translateY(-3px);
+  }
+
+
+  /* Fade In Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .form-container form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+
+
+  /* patient page */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+th {
+    background-color: #03294d;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size:14px;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+td {
+    font-size: 1rem;
+}
+
+/* Table Header and Row Hover Effects */
+thead {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+tbody tr:hover td {
+    background-color: #e9f5ea;
+    color: #997b04;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    table, th, td {
+        font-size: 0.9rem;
+    }
+    th, td {
+        padding: 10px;
+    }
+}
+
+/* Additional Responsive Styles for Mobile Devices */
+@media screen and (max-width: 480px) {
+    /* Add a scroll container for the table */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Stack table rows in single-column layout */
+    table {
+        /* display: block; */
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 5px;
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    td:before {
+        content: attr(data-label); /* Display data labels for each cell */
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #03294d;
+    }
+}
