@@ -215,6 +215,7 @@ form h1 {
 
   input[type='number'],
   input[type='text'],
+  
   select,
   input[type='radio'] {
     width: 100%;
@@ -225,7 +226,24 @@ form h1 {
     transition: border-color 0.3s ease;
     outline:none;
   }
-  
+  .check{
+    display: flex;
+    /* align-items: center; */
+  }
+  .check label{
+    margin-left: -210px;
+  }
+  input[type="checkbox"]{
+    width: 100%;
+    border: 1px solid #ddd;
+    accent-color: #004c93;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    outline:none;
+    margin-top: 10px;
+    margin-left: -215px;
+    cursor: pointer;
+  }
 
   input[type='number']:focus,
   input[type='text']:focus,

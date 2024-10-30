@@ -2,10 +2,12 @@ from flask import render_template,request,jsonify,flash,url_for, redirect, reque
 from myapp import app,db,bcrypt
 from .models import Patient,User
 from .form import Addpatient, Register, Login,Editpatient 
+from flask_login import login_user, logout_user, current_user, login_required
 
 #TODO: ADD PATIENTS TO DATABASE
 
 @app.route('/addpatient', methods=['GET', 'POST'])
+@login_required
 def add_patient():
     form = Addpatient()
     if form.validate_on_submit():
@@ -39,6 +41,7 @@ def add_patient():
         
  #TODO: SERVE THE PATIENT TO FRONTEND   
 @app.route("/patient", methods=["GET"])
+@login_required
 def patient():
         patients = Patient.query.all()
         return render_template('patient.html', patients=patients)
@@ -68,10 +71,11 @@ def patient_edit(id):
     # Render template with form, which includes any errors on failed POST
     return render_template('edit_patient.html', form=form)
 
-    
-    
+ #TODO: DELETE PATIENT DATA   
 @app.route("/register", methods=["POST", "GET"])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = Register()
     if form.validate_on_submit():
         first_name = form.data.get('first_name')
@@ -97,20 +101,32 @@ def register():
     
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = Login()
     if form.validate_on_submit():
         email = form.data.get('email')
         password = form.data.get('password')
         user = User.query.filter_by(email=email).first()
         if user and bcrypt.check_password_hash(user.password, password):
+            login_user(user, remember = form.remember.data)  
             flash('Login successful. You can now access your account.', 'success')
-            return redirect(url_for('patient'))
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('index'))
         else:
             flash('Login unsuccessful. Please check your email and password.', 'danger')
             return redirect(url_for('login'))
     return render_template('login.html', form=form)
     
     
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+    
+ 
+ 
+ 
     
 @app.route("/")
 def index():
