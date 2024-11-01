@@ -18,7 +18,8 @@
     ],
     "env": {
       "MY_ENV_VARIABLE": "value",
-       "DATABASE_URL": "sqlite:///patients.db"
+       "DATABASE_URL": "sqlite:///patients.db",
+       "SECRET_KEY": "FHHGJGDKFNFNFNnsnbjdvjdjd74757"
     },
     "static": {
       "directory": "public"
