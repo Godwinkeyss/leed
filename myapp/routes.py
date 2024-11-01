@@ -72,6 +72,23 @@ def patient_edit(id):
     return render_template('edit_patient.html', form=form)
 
  #TODO: DELETE PATIENT DATA   
+@app.route('/patient/delete/<int:id>', methods=["POST"])
+def delete(id):
+    patient = Patient.query.get_or_404(id)
+    try:
+        db.session.delete(patient)
+        db.session.commit()
+        flash("Patient's details have been deleted successfully.", "success")
+        return redirect(url_for('patient'))  # Redirect to a list of patients or homepage
+    except Exception as e:
+        db.session.rollback()  # Rollback in case of an error
+        flash("Something went wrong, please try again.", "error")
+        return redirect(url_for('index'))  # Redirect to a safe page
+
+ 
+ 
+ 
+ 
 @app.route("/register", methods=["POST", "GET"])
 def register():
     if current_user.is_authenticated:

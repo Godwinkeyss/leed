@@ -335,51 +335,18 @@ tbody tr:hover td {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    table, th, td {
-        font-size: 0.9rem;
-    }
-    th, td {
-        padding: 10px;
-    }
-}
 
-/* Additional Responsive Styles for Mobile Devices */
-@media screen and (max-width: 480px) {
-    /* Add a scroll container for the table */
-    .table-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
 
-    /* Stack table rows in single-column layout */
-    table {
-        /* display: block; */
-        width: 100%;
-    }
 
-    thead {
+
+@media (max-width: 768px) {
+    .clip {
         display: none;
     }
-
-    tr {
-        display: block;
-        margin-bottom: 15px;
+    .hero-right{
+        display:none;
     }
-
-    td {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 5px;
-        font-size: 0.9rem;
-        text-align: left;
-    }
-
-    td:before {
-        content: attr(data-label); /* Display data labels for each cell */
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #03294d;
+    .header-left p{
+        display:none;
     }
 }

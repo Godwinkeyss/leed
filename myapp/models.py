@@ -53,6 +53,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     
+    
     def __repr__(self):
         return f'<Register {self.first_name} {self.last_name} {self.email}>'
 

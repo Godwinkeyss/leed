@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
     <h1 class="text-center mt-4 mb-4">Patient List</h1>
+    <div class="table-responsive">
 
     <table class="container">
+        
         <thead>
             <tr>
                 <th>ID</th>
@@ -18,28 +20,55 @@
                 <th>BMI</th>
                 <th>Smoking Status</th>
                 <th>Stroke</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for patient in patients %}
             <tr>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.id }}<a/></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.first_name }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.last_name }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.gender }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.age }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.hypertension }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.ever_married }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.work_type }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.residence_type }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.avg_glucose_level }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.bmi }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.smoking_status }}</a></td>
-                <td><a href="{{ url_for('patient_edit',  id=patient.id) }}">{{ patient.stroke }}</a></td>
+                <td>{{ loop.index }}</td>
+                <td>{{ patient.first_name }}</td>
+                <td>{{ patient.last_name }}</td>
+                <td>{{ patient.gender }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.hypertension }}</td>
+                <td>{{ patient.ever_married }}</td>
+                <td>{{ patient.work_type }}</td>
+                <td>{{ patient.residence_type }}</td>
+                <td>{{ patient.avg_glucose_level }}</td>
+                <td>{{ patient.bmi }}</td>
+                <td>{{ patient.smoking_status }}</td>
+                <td>{{ patient.stroke }}</td>
+                <td class="d-flex gap-3">
+                    <a href="{{ url_for('patient_edit', id=patient.id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ patient.id }}">Delete</button>
+                </td>
             </tr>
+
+            <!-- Modal for deleting each patient -->
+            
+<div class="modal fade" id="deleteModal{{ patient.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ patient.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel{{ patient.id }}">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete {{ patient.first_name }} {{ patient.last_name }}'s data?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="{{ url_for('delete', id=patient.id) }}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+</div>
 {% endblock %}
