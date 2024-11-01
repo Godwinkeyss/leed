@@ -9,14 +9,19 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "app.py"
+        "dest": "/api/$1"
       },
       {
         "src": "/(.*)",
         "dest": "/app.py"
       }
-    ]
-   
-    
+    ],
+    "env": {
+      "MY_ENV_VARIABLE": "value",
+       "DATABASE_URL": "sqlite:///patients.db"
+    },
+    "static": {
+      "directory": "public"
+    }
   }
   
