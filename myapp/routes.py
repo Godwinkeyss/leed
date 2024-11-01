@@ -71,7 +71,7 @@ def patient_edit(id):
     # Render template with form, which includes any errors on failed POST
     return render_template('edit_patient.html', form=form)
 
- #TODO: DELETE PATIENT DATA   
+ #TODO: DELETE PATIENT DATAsss   
 @app.route('/patient/delete/<int:id>', methods=["POST"])
 def delete(id):
     patient = Patient.query.get_or_404(id)
